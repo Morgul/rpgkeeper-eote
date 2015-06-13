@@ -4,16 +4,15 @@
 // @module main.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function MainController($scope, $modal, charSvc)
+function MainController($scope, $routeParams, $modal, charSvc)
 {
     $scope.nav = 'character';
     $scope.notfound = false;
 
-    charSvc.current.loaded
-        .then(function()
-        {
-            $scope.char = charSvc.current;
-        })
+    // Get the current character
+    $scope.char = charSvc.get($routeParams.charID);
+
+    $scope.char.loaded
         .catch(function(error)
         {
             if(error.status == 404)
@@ -42,6 +41,7 @@ function MainController($scope, $modal, charSvc)
 
 angular.module('eote.controllers').controller('MainCtrl', [
     '$scope',
+    '$routeParams',
     '$modal',
     'CharacterService',
     MainController
