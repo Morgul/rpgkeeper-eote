@@ -1,0 +1,143 @@
+//----------------------------------------------------------------------------------------------------------------------
+// Models for RPGKeeper
+//
+// @module models.js
+//----------------------------------------------------------------------------------------------------------------------
+
+var path = require('path');
+
+var trivialdb = require('trivialdb');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+var db = { errors: trivialdb.errors };
+var rootPath = path.join(__dirname, 'db');
+
+//----------------------------------------------------------------------------------------------------------------------
+// Predefined
+//----------------------------------------------------------------------------------------------------------------------
+
+db.ActivationTypes = [
+    'Passive',
+    'Active (Incidental)',
+    'Active (Incidental - Out of turn)',
+    'Active (Maneuver)',
+    'Active (Action)'
+];
+
+db.Characteristics = [
+    { name: "Brawn", abbrev: "Br", ranks: 0 },
+    { name: "Agility", abbrev: "Ag", ranks: 0 },
+    { name: "Intellect", abbrev: "Int", ranks: 0 },
+    { name: "Cunning", abbrev: "Cun", ranks: 0 },
+    { name: "Willpower", abbrev: "Will", ranks: 0 },
+    { name: "Presence", abbrev: "Pr", ranks: 0 }
+];
+
+db.Skills = [
+    { name: "Astrogation", type: "general", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Athletics", type: "general", characteristic: "Brawn", ranks: 0, career: false },
+    { name: "Charm", type: "general", characteristic: "Presence", ranks: 0, career: false },
+    { name: "Coercion", type: "general", characteristic: "Willpower", ranks: 0, career: false },
+    { name: "Computers", type: "general", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Cool", type: "general", characteristic: "Presence", ranks: 0, career: false },
+    { name: "Coordination", type: "general", characteristic: "Agility", ranks: 0, career: false },
+    { name: "Deception", type: "general", characteristic: "Cunning", ranks: 0, career: false },
+    { name: "Discipline", type: "general", characteristic: "Willpower", ranks: 0, career: false },
+    { name: "Leadership", type: "general", characteristic: "Presence", ranks: 0, career: false },
+    { name: "Mechanics", type: "general", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Medicine", type: "general", characteristic: "Intellect", ranks: 0, career: false } ,
+    { name: "Negotiation", type: "general", characteristic: "Presence", ranks: 0, career: false },
+    { name: "Perception", type: "general", characteristic: "Cunning", ranks: 0, career: false },
+    { name: "Piloting - Space", type: "general", characteristic: "Agility", ranks: 0, career: false },
+    { name: "Piloting - Planetary", type: "general", characteristic: "Agility", ranks: 0, career: false },
+    { name: "Resilience", type: "general", characteristic: "Brawn", ranks: 0, career: false },
+    { name: "Skulduggery", type: "general", characteristic: "Cunning", ranks: 0, career: false },
+    { name: "Stealth", type: "general", characteristic: "Agility", ranks: 0, career: false },
+    { name: "Streetwise", type: "general", characteristic: "Cunning", ranks: 0, career: false },
+    { name: "Survival", type: "general", characteristic: "Cunning", ranks: 0, career: false },
+    { name: "Vigilance", type: "general", characteristic: "Willpower", ranks: 0, career: false },
+
+    // Knowledge Skills
+    { name: "All", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Core Worlds", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Education", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Lore", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Outer Rim", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Underworld", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Xenology", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+    { name: "Warfare", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
+
+    // Combat Skills
+    { name: "Brawl", type: "combat", characteristic: "Brawn", ranks: 0, career: false },
+    { name: "Gunnery", type: "combat", characteristic: "Agility", ranks: 0, career: false },
+    { name: "Lightsaber", type: "combat", characteristic: "Brawn", ranks: 0, career: false },
+    { name: "Melee", type: "combat", characteristic: "Brawn", ranks: 0, career: false },
+    { name: "Ranged - Light", type: "combat", characteristic: "Agility", ranks: 0, career: false },
+    { name: "Ranged - Heavy", type: "combat", characteristic: "Agility", ranks: 0, career: false }
+];
+
+//----------------------------------------------------------------------------------------------------------------------
+// System Models
+//----------------------------------------------------------------------------------------------------------------------
+
+db.Ability = trivialdb.defineModel('abilities', {
+    name: String,
+    description: String
+}, { rootPath: rootPath, pk: 'name' });
+
+db.Talent = trivialdb.defineModel('talents', {
+    name: String,
+    description: String,
+    activation: { type: String, choices: db.ActivationTypes },
+    ranked: { type: Boolean, default: false },
+    official: { type: Boolean, default: false },
+    trees: { type: Array, default: [] }
+}, { rootPath: rootPath, pk: 'name' });
+
+db.Weapons = trivialdb.defineModel('weapons', {
+    name: String,
+    skill: String,
+    damage: Number,
+    critical: Number,
+    range: { type: String, choices: ["engaged", "short", "medium", "long", "extreme"] },
+    special: { type: Array, default: [] },
+    charID: String
+}, { rootPath: rootPath });
+
+//----------------------------------------------------------------------------------------------------------------------
+// Character Model
+//----------------------------------------------------------------------------------------------------------------------
+
+db.Character = trivialdb.defineModel('characters', {
+    baseChar: { type: String, required: true },
+    gender: String,
+    species: String,
+    age: Number,
+    height: String,
+    characteristics: { type: Array, default: db.Characteristics },
+    soak: { type: Number, default: 0 },
+    forceRank: { type: Number, default: 0 },
+    forcePool: { type: Number, default: 0 },
+    forceCommitted: { type: Number, default: 0 },
+    meleeDefense: { type: Number, default: 0 },
+    rangedDefense: { type: Number, default: 0 },
+    wounds: { type: Number, default: 0 },
+    woundThreshold: { type: Number, default: 0 },
+    strain: { type: Number, default: 0 },
+    strainThreshold: { type: Number, default: 0 },
+    skills: { type: Array, default: db.Skills },
+    talents: { type: Array, default: [] },
+    abilities: { type: Array, default: [] },
+    equipment: { type: Array, default: [] },
+    notes: { type: Array, default: [] },
+    quickNotes: String,
+    totalXP: { type: Number, default: 0 },
+    availableXP: { type: Number, default: 0 }
+}, { rootPath: rootPath, pk: 'baseChar' });
+
+//----------------------------------------------------------------------------------------------------------------------
+
+module.exports = db;
+
+//----------------------------------------------------------------------------------------------------------------------

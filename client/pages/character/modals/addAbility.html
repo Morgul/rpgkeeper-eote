@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="fa fa-plus"></i> Add Ability</h3>
+</div>
+
+<div class="modal-body">
+    <div ng-show="loading" class="text-center">
+        <h4>Loading Abilities</h4>
+        <progressbar class="progress-striped active" max="100" value="100"></progressbar>
+    </div>
+    <form ng-hide="loading">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" class="form-control" ng-model="ability.name" typeahead="ability.name for ability in abilities | filter:$viewValue" typeahead-on-select="selectAbility($item, $model, $label)">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="10" class="form-control" ng-model="ability.description" ng-disabled="!isNew(ability)"></textarea>
+            <p class="help-block text-right">
+                Use Markdown to format text. (<a target="_blank" href="https://guides.github.com/features/mastering-markdown/">Guide</a>)
+            </p>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="$dismiss()"><i class="fa fa-times"></i> Cancel</button>
+    <button class="btn btn-primary" ng-click="save(ability)"><i class="fa fa-save"></i> Save</button>
+</div>
+

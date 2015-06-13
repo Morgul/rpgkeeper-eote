@@ -1,0 +1,162 @@
+//----------------------------------------------------------------------------------------------------------------------
+// Character Styles
+//----------------------------------------------------------------------------------------------------------------------
+
+#character-page {
+    .first-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: stretch;
+
+        .first-column {
+            flex: 0 0 300px;
+            width: 300px;
+            height: 445px;
+        }
+
+        .middle-column {
+            flex: 1 1 auto;
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: stretch;
+            align-items: stretch;
+            margin-left: 10px;
+        }
+
+        .last-column {
+            flex: 1 1 auto;
+            margin-left: 10px;
+
+            width: 300px;
+        }
+    }
+
+    .second-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: stretch;
+
+        .first-column {
+            flex: 1 1 auto;
+        }
+
+        .second-column {
+            flex: 0 1 300px;
+            margin-left: 10px;
+        }
+    }
+
+    .char-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: stretch;
+
+        & + .char-row {
+            margin-top: 15px;
+        }
+
+        .char {
+            flex: 1 1 auto;
+            margin-bottom: 0;
+            width: 90px;
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+
+            h3 {
+                margin: 0;
+            }
+        }
+    }
+
+    .stat-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: stretch;
+
+        .stat {
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 4px;
+            flex: 1 1 auto;
+            margin-bottom: 0;
+
+            .title {
+                text-align: center;
+                margin: 0;
+                padding-bottom: 4px;
+                border-bottom: 1px solid #ccc;
+            }
+
+            .body {
+                padding-top: 5px;
+                text-align: center;
+            }
+
+            h4 {
+                display: inline-block;
+            }
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+
+            .panel-title {
+                font-size: 14px;
+            }
+
+            h3, h4 {
+                margin: 0;
+            }
+        }
+    }
+
+    .skills-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: stretch;
+
+        & > .panel {
+            flex: 1 1 auto;
+            margin-bottom: 0;
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .panel {
+        margin-bottom: 10px;
+
+        &.stat-panel {
+            margin-bottom: 12px;
+        }
+    }
+
+    h5.underlined {
+        padding-bottom: 2px;
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,80 @@
+//----------------------------------------------------------------------------------------------------------------------
+// Notes Styles
+//----------------------------------------------------------------------------------------------------------------------
+
+.notes-panel {
+    button.close + button.close {
+        margin-left: 8px;
+    }
+
+    .panel-body {
+        padding: 0 15px;
+    }
+}
+
+.notes-tabs {
+    .fa.new {
+        font-size: .65em;
+        position: relative;
+        top: -8.5px;
+        right: -4px;
+    }
+
+    tab-heading button.close {
+        margin-left: 8px;
+        line-height: .8em;
+        visibility: hidden;
+    }
+
+    .active tab-heading button.close {
+        visibility: visible;
+    }
+
+    ul.nav-tabs {
+        min-height: 800px;
+
+        li:first-child {
+            margin-top: 15px;
+        }
+        li:last-child {
+            margin-bottom: 15px;
+        }
+    }
+
+    .tab-content {
+        padding-top: 5px;
+    }
+
+    .cm-editor.form-control {
+        height: 660px;
+        padding: 0;
+
+        .CodeMirror {
+            height: 100%;
+
+            .CodeMirror-scroll {
+                padding-left: 12px;
+                padding-top: 6px;
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+// CodeMirror
+//----------------------------------------------------------------------------------------------------------------------
+
+/*
+.CodeMirror {
+    height: auto !important;
+}
+
+.CodeMirror-scroll {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    min-height: 300px !important;
+}
+*/
+
+
+//----------------------------------------------------------------------------------------------------------------------
