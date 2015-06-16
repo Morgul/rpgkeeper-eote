@@ -1,0 +1,10 @@
+.DS_Store
+
+# IntelliJ artifacts
+.idea
+
+# DB artifacts
+server/db/*.json
+
+# Node artifacts
+node_modules
