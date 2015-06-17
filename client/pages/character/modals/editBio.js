@@ -4,18 +4,16 @@
 // @module editBio.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function EditBioModal($scope)
+function EditBioModal($scope, char)
 {
-    $scope.save = function()
-    {
-        $scope.$close();
-    }; // end save
+    $scope.char = char;
 } // end EditBioModal
 
 // ---------------------------------------------------------------------------------------------------------------------
 
 angular.module('eote.components').controller('EditBioModal', [
     '$scope',
+    'char',
     EditBioModal
 ]);
 

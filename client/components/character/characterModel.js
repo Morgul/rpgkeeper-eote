@@ -22,10 +22,15 @@ function CharacterModelFactory($http, Promise, baseSvc)
 
         // Base Char
         get name(){ return this.baseChar.name; },
+        set name(val){ this.baseChar.name = val; },
         get portrait(){ return this.baseChar.portrait; },
+        set portrait(val){ this.baseChar.portrait = val; },
         get thumbnail(){ return this.baseChar.thumbnail; },
+        set thumbnail(val){ this.baseChar.thumbnail = val; },
         get biography(){ return this.baseChar.biography; },
+        set biography(val){ this.baseChar.biography = val; },
         get description(){ return this.baseChar.description; },
+        set description(val){ this.baseChar.description = val; },
 
         // EotE Char
         get gender(){ return this.char.gender; },
@@ -151,7 +156,12 @@ function CharacterModelFactory($http, Promise, baseSvc)
 
     CharacterModel.prototype.save = _.debounce(function()
     {
-        $http.put(this._url, this.char);
+        var self = this;
+        $http.put(this._url, this.char)
+            .success(function()
+            {
+                self.baseChar.save();
+            });
     }, 1000);
 
     // -----------------------------------------------------------------------------------------------------------------
