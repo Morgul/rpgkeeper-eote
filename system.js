@@ -11,6 +11,7 @@ var routeUtils = require('./server/routes/utils');
 var charRoute = require('./server/routes/characters');
 var abilityRoute = require('./server/routes/abilities');
 var talentRoute = require('./server/routes/talents');
+var forcePowersRoute = require('./server/routes/forcePowers');
 
 var logger = require('omega-logger').loggerFor(module);
 
@@ -36,6 +37,7 @@ router.use(express.static(staticRoot));
 router.use('/characters', charRoute);
 router.use('/abilities', abilityRoute);
 router.use('/talents', talentRoute);
+router.use('/force-powers', forcePowersRoute);
 
 //----------------------------------------------------------------------------------------------------------------------
 

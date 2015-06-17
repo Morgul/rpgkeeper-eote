@@ -95,6 +95,13 @@ db.Talent = trivialdb.defineModel('talents', {
     trees: { type: Array, default: [] }
 }, { rootPath: rootPath, pk: 'name' });
 
+db.ForcePower = trivialdb.defineModel('forcePowers', {
+    name: String,
+    description: String,
+    upgrades: { type: Array, default: [] },
+    official: { type: Boolean, default: false }
+}, { rootPath: rootPath, pk: 'name' });
+
 db.Weapons = trivialdb.defineModel('weapons', {
     name: String,
     skill: String,
@@ -128,6 +135,7 @@ db.Character = trivialdb.defineModel('characters', {
     strainThreshold: { type: Number, default: 0 },
     skills: { type: Array, default: db.Skills },
     talents: { type: Array, default: [] },
+    forcePowers: { type: Array, default: [] },
     abilities: { type: Array, default: [] },
     equipment: { type: Array, default: [] },
     notes: { type: Array, default: [] },
