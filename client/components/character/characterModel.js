@@ -59,6 +59,8 @@ function CharacterModelFactory($http, Promise, baseSvc)
         set forcePool(val){ this.char.forcePool = val; },
         get forceCommitted(){ return this.char.forceCommitted; },
         set forceCommitted(val){ this.char.forceCommitted = val; },
+        get forcePowers(){ return this.char.forcePowers; },
+        set forcePowers(val){ this.char.forcePowers = val; },
         get wounds(){ return this.char.wounds; },
         set wounds(val){ this.char.wounds = val; },
         get woundThreshold(){ return this.char.woundThreshold; },
@@ -124,21 +126,37 @@ function CharacterModelFactory($http, Promise, baseSvc)
 
                         console.log('char:', char);
 
+                        var promises = [];
+
                         //----------------------------------------------------------------------------------------------
                         // Populate Talents
                         //----------------------------------------------------------------------------------------------
 
-                        var talentPromises = [];
                         _.each(char.talents, function(talent)
                         {
-                            talentPromises.push($http.get('/systems/eote/talents/' + talent.name)
+                            promises.push($http.get('/systems/eote/talents/' + talent.name)
                                 .success(function(talentDesc)
                                 {
                                     talent.description = talentDesc;
                                 }));
                         });
 
-                        return Promise.all(talentPromises);
+                        //----------------------------------------------------------------------------------------------
+                        // Populate Force Powers
+                        //----------------------------------------------------------------------------------------------
+
+                        _.each(char.forcePowers, function(forcePower)
+                        {
+                            promises.push($http.get('/systems/eote/force-powers/' + forcePower.name)
+                                .success(function(forcePowerDesc)
+                                {
+                                    forcePower.base = forcePowerDesc;
+                                }));
+                        });
+
+                        //----------------------------------------------------------------------------------------------
+
+                        return Promise.all(promises);
                     });
             });
     }; // end _loadChar
