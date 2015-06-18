@@ -135,12 +135,27 @@
         align-content: stretch;
         align-items: stretch;
 
-        & > .panel {
+        & > .col {
+            display: flex;
+            width: 285px;
             flex: 1 1 auto;
+            flex-direction: column;
             margin-bottom: 0;
 
             &:not(:first-child) {
                 margin-left: 10px;
+            }
+
+            & > .panel {
+                flex: 1 1 auto;
+
+                &.abilities {
+                    flex: 0 1 auto;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
             }
         }
     }

@@ -113,6 +113,7 @@
     <div class="second-row">
         <div class="first-column">
 
+            <!-- Weapons -->
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <button type="button" class="close" aria-label="Edit" ng-click="editWeapons()">
@@ -125,20 +126,18 @@
                 </div>
             </div>
 
+            <div class="skills-row" style="margin-bottom: 10px;">
+                <div class="col">
 
-            <div class="skills-row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Skills</h4>
-                    </div>
-                    <div class="panel-body">
-
-                        <!-- Combat Skills -->
-                        <section class="clearfix">
-                            <button class="btn btn-link pull-right disabled" ng-click="addSkill('combat')" title="Add Combat Skill">
-                                <i class="fa fa-plus"></i>
+                    <!-- Combat Skills -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button type="button" class="close" aria-label="Add" ng-click="addSkill('combat')">
+                                <span aria-hidden="true"><i class="fa fa-plus"></i></span>
                             </button>
-                            <h5 class="underlined">Combat Skills</h5>
+                            <h4 class="panel-title">Combat Skills</h4>
+                        </div>
+                        <div class="panel-body">
                             <table style="width: 100%">
                                 <tr class="skill" ng-repeat="skill in char.skills | filter:{ type: 'combat' }">
                                     <td ng-click="setSkillDice(skill)" style="cursor: pointer">
@@ -157,14 +156,18 @@
                                     </td>
                                 </tr>
                             </table>
-                        </section>
+                        </div>
+                    </div>
 
-                        <!-- Knowledge Skills -->
-                        <section class="clearfix">
-                            <button class="btn btn-link pull-right disabled" ng-click="addSkill('knowledge')" title="Add Knowledge Skill">
-                                <i class="fa fa-plus"></i>
+                    <!-- Knowledge Skills -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button type="button" class="close" aria-label="Add" ng-click="addSkill('knowledge')">
+                                <span aria-hidden="true"><i class="fa fa-plus"></i></span>
                             </button>
-                            <h5 class="underlined">Knowledge Skills</h5>
+                            <h4 class="panel-title">Knowledge Skills</h4>
+                        </div>
+                        <div class="panel-body">
                             <table style="width: 100%">
                                 <tr class="skill" ng-repeat="skill in char.skills | filter:{ type: 'knowledge' }">
                                     <td ng-click="setSkillDice(skill)" style="cursor: pointer">
@@ -183,14 +186,18 @@
                                     </td>
                                 </tr>
                             </table>
-                        </section>
+                        </div>
+                    </div>
 
-                        <!-- General Skills -->
-                        <section class="clearfix">
-                            <button class="btn btn-link pull-right disabled" ng-click="addSkill('general')" title="Add General Skill">
-                                <i class="fa fa-plus"></i>
+                    <!-- General Skills -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button type="button" class="close" aria-label="Add" ng-click="addSkill('general')">
+                                <span aria-hidden="true"><i class="fa fa-plus"></i></span>
                             </button>
-                            <h5 class="underlined">General Skills</h5>
+                            <h4 class="panel-title">General Skills</h4>
+                        </div>
+                        <div class="panel-body">
                             <table style="width: 100%">
                                 <tr class="skill" ng-repeat="skill in char.skills | filter:{ type: 'general' }">
                                     <td ng-click="setSkillDice(skill)" style="cursor: pointer">
@@ -209,45 +216,64 @@
                                     </td>
                                 </tr>
                             </table>
-                        </section>
+                        </div>
                     </div>
                 </div>
-                <div class="panel panel-default" style="width: 285px">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Talents</h4>
-                    </div>
-                    <div class="panel-body">
+                <div class="col">
 
-                        <!-- Abilities -->
-                        <section class="clearfix">
-                            <button class="btn btn-link pull-right" ng-click="addAbility()" title="Add Ability">
-                                <i class="fa fa-plus"></i>
+                    <!-- Abilities -->
+                    <div class="panel panel-default abilities">
+                        <div class="panel-heading">
+                            <button type="button" class="close" aria-label="Add" ng-click="addAbility()">
+                                <span aria-hidden="true"><i class="fa fa-plus"></i></span>
                             </button>
-                            <h5 class="underlined">Abilities</h5>
-
-                            <div ng-show="!abilities || abilities.length < 0" class="text-center">
+                            <h4 class="panel-title">Abilities</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div ng-show="!abilities || abilities.length == 0" class="text-center">
                                 <b>No special abilities.</b>
                             </div>
 
                             <ability-list abilities="char.abilities" char="char"></ability-list>
-                        </section>
+                        </div>
+                    </div>
 
-                        <!-- Talents -->
-                        <section class="clearfix">
-                            <button class="btn btn-link pull-right" ng-click="addTalent()" title="Add Talent">
-                                <i class="fa fa-plus"></i>
+                    <!-- Talents -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <button type="button" class="close" aria-label="Add" ng-click="addTalent()">
+                                <span aria-hidden="true"><i class="fa fa-plus"></i></span>
                             </button>
-                            <h5 class="underlined">Talents</h5>
-
-                            <div ng-show="!char.talents || char.talents.length < 0" class="text-center">
+                            <h4 class="panel-title">Talents</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div ng-show="!char.talents || char.talents.length == 0" class="text-center">
                                 <b>No talents.</b>
                             </div>
 
                             <talent-list talents="char.talents" char="char"></talent-list>
-                        </section>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Force Powers -->
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <button type="button" class="close" aria-label="Add" ng-click="addForcePower()">
+                        <span aria-hidden="true"><i class="fa fa-plus"></i></span>
+                    </button>
+                    <h4 class="panel-title">Force Powers</h4>
+                </div>
+                <div class="panel-body">
+                    <div ng-show="!char.forcePowers || char.forcePowers.length == 0" class="text-center">
+                        <b>No Force Powers.</b>
+                    </div>
+
+                    <force-power-list char="char"></force-power-list>
+                </div>
+            </div>
+
         </div>
         <div class="second-column">
 
