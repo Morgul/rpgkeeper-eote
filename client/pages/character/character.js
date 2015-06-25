@@ -124,11 +124,11 @@ function CharacterCtrl($scope, $modal, charSvc, diceSvc, abilitySvc)
     $scope.addTalent = function()
     {
         $modal.open({
-                templateUrl: '/systems/eote/pages/character/modals/addTalent.html',
-                keyboard: false,
-                scope: $scope,
-                controller: 'AddTalentModal'
-            })
+            templateUrl: '/systems/eote/pages/character/modals/addTalent.html',
+            keyboard: false,
+            scope: $scope,
+            controller: 'AddTalentModal'
+        })
             .result
             .then(function(talent)
             {
@@ -136,6 +136,26 @@ function CharacterCtrl($scope, $modal, charSvc, diceSvc, abilitySvc)
                 charSvc.current.save();
             });
     }; // end addTalent
+
+    //------------------------------------------------------------------------------------------------------------------
+    // ForcePowers
+    //------------------------------------------------------------------------------------------------------------------
+
+    $scope.addForcePower = function()
+    {
+        $modal.open({
+                templateUrl: '/systems/eote/pages/character/modals/addForcePower.html',
+                keyboard: false,
+                scope: $scope,
+                controller: 'AddForcePowerModal'
+            })
+            .result
+            .then(function(forcePower)
+            {
+                charSvc.current.forcePowers.push(forcePower);
+                charSvc.current.save();
+            });
+    }; // end addForcePower
 
     //------------------------------------------------------------------------------------------------------------------
     // Characteristics

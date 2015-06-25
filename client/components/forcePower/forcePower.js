@@ -1,22 +1,22 @@
 // ---------------------------------------------------------------------------------------------------------------------
-// TalentDisplay
+// ForcePowerList
 //
 // @module forcePower.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function TalentDisplayFactory(_, $modal)
+function ForcePowerListFactory(_, $modal)
 {
-    function TalentDisplayController($scope)
+    function ForcePowerListController($scope)
     {
         $scope.collapse = true;
 
         $scope.edit = function(forcePower)
         {
             $modal.open({
-                    templateUrl: '/systems/eote/components/forcePower/modals/editTalent.html',
+                    templateUrl: '/systems/eote/components/forcePower/modals/editForcePower.html',
                     keyboard: false,
                     scope: $scope,
-                    controller: 'EditTalentModal',
+                    controller: 'EditForcePowerModal',
                     resolve: {
                         forcePower: function()
                         {
@@ -25,9 +25,9 @@ function TalentDisplayFactory(_, $modal)
                     }
                 })
                 .result
-                .then(function(modTalent)
+                .then(function(modForcePower)
                 {
-                    _.apply(forcePower, modTalent);
+                    _.apply(forcePower, modForcePower);
                     $scope.char.save();
                 });
         }; // end edit
@@ -37,7 +37,7 @@ function TalentDisplayFactory(_, $modal)
             $scope.char.forcePowers.splice(index, 1);
             $scope.char.save();
         }; // end remove
-    } // end TalentDisplayController
+    } // end ForcePowerListController
 
     return {
         restrict: 'E',
@@ -45,16 +45,16 @@ function TalentDisplayFactory(_, $modal)
             char: "="
         },
         templateUrl: "/systems/eote/components/forcePower/forcePower.html",
-        controller: ['$scope', TalentDisplayController]
+        controller: ['$scope', ForcePowerListController]
     };
-} // end TalentDisplayFactory
+} // end ForcePowerListFactory
 
 // ---------------------------------------------------------------------------------------------------------------------
 
 angular.module('eote.components').directive('forcePowerList', [
     'lodash',
     '$modal',
-    TalentDisplayFactory
+    ForcePowerListFactory
 ]);
 
 // ---------------------------------------------------------------------------------------------------------------------
