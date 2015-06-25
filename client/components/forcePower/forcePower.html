@@ -15,6 +15,8 @@
             <!--hr style="margin-top: 10px; margin-bottom: 10px"-->
             <h5 class="underlined">Upgrades</h5>
 
+            <h5 ng-show="!forcePower.upgrades || forcePower.upgrades.length == 0" style="margin-left: 10px">No upgrades.</h5>
+
             <ul class="list-unstyled upgrade-list">
                 <li ng-repeat="upgrade in forcePower.upgrades">
                     <b>{{ forcePower.base.upgrades[upgrade.index].name }}<span ng-if="upgrade.ranks > 1"> {{ upgrade.ranks }}</span>:</b>
