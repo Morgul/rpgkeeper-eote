@@ -1,6 +1,6 @@
 {
   "name": "rpgkeeper-eote",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "An Edge of the Empire system for RPGKeeper.",
   "main": "system.js",
   "scripts": {
