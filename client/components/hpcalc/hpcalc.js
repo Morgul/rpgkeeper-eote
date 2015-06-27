@@ -78,7 +78,13 @@ function HPCalcFactory(_, $modal)
                 $scope.char.status.stimpacksUsed += 1;
                 $scope.save();
             } // end if
-        }; // end
+        }; // end useStimpack
+
+        $scope.resetStimpacks = function()
+        {
+            $scope.char.status.stimpacksUsed = 0;
+            $scope.save();
+        }; // end resetStimpacks
 
         $scope.dealWounds = function(wounds, ignore)
         {

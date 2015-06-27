@@ -25,7 +25,16 @@
 			</div>
 		</div>
 		<div style="margin-bottom: 5px;">
-			<button class="btn btn-default btn-block" ng-click="useStimpack()">Stimpack ({{ stimpackHealing }})</button>
+            <div class="input-group">
+                <button class="btn btn-default btn-block" ng-click="useStimpack()" style="border-top-right-radius: 0; border-bottom-right-radius: 0">
+                    Stimpack ({{ stimpackHealing }})
+                </button>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" title="Reset Stimpack Uses" ng-click="resetStimpacks()">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </span>
+            </div>
 		</div>
 		<div class="input-group">
 			<input type="number" class="form-control" placeholder="Wounds" ng-model="woundInput">
