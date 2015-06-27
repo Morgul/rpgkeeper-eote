@@ -152,7 +152,10 @@ function CharacterCtrl($scope, $modal, charSvc, diceSvc, abilitySvc)
             .result
             .then(function(forcePower)
             {
-                charSvc.current.forcePowers.push(forcePower);
+                charSvc.current.forcePowers.push({
+                    name: forcePower.name,
+                    base: forcePower
+                });
                 charSvc.current.save();
             });
     }; // end addForcePower

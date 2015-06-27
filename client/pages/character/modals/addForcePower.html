@@ -8,8 +8,19 @@
         <progressbar class="progress-striped active" max="100" value="100"></progressbar>
     </div>
     <form ng-hide="loading">
-        <h4 class="text-center">Not implemented, yet.</h4>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" class="form-control" type="text" ng-model="forcePower.name" typeahead="forcePower.name for forcePower in searchForcePowers($viewValue)" typeahead-on-select="selectForcePower($item, $model, $label)">
+        </div>
+        <div class="form-group">
+            <label for="base-power">Base Power</label>
+            <textarea id="base-power" class="form-control" rows="5" ng-model="forcePower.description" ng-disabled="disabled"></textarea>
+        </div>
     </form>
+    <span class="help-block">
+        Note: To add an upgrade to a power, add the power to you character, then edit the power.
+        (This will also add the upgrade to your character. It can be removed later without deleting it from the power.)
+    </span>
 </div>
 
 <div class="modal-footer">
