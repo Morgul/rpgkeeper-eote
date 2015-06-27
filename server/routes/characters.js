@@ -63,6 +63,18 @@ router.put('/:charID', function(req, resp)
             {
                 _.assign(character, req.body);
 
+                // Clean talents
+                character.talents = _.map(character.talents, function(talent)
+                {
+                    return _.omit(talent, 'description');
+                });
+
+                // Clean force powers
+                character.forcePowers = _.map(character.forcePowers, function(forcePower)
+                {
+                    return _.omit(forcePower, 'base');
+                });
+
                 return character.save()
                     .then(function()
                     {
