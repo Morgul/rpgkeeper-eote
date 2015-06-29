@@ -71,6 +71,8 @@ function CharacterModelFactory($http, Promise, baseSvc)
         set strainThreshold(val){ this.char.strainThreshold = val; },
         get equipment(){ return this.char.equipment; },
         set equipment(val){ this.char.equipment = val; },
+        get criticals(){ return this.char.criticals; },
+        set criticals(val){ this.char.criticals = val; },
         get notes(){ return this.char.notes; },
         set notes(val){ this.char.notes = val; },
         get quickNotes(){ return this.char.quickNotes; },

@@ -138,6 +138,7 @@ db.Character = trivialdb.defineModel('characters', {
     forcePowers: { type: Array, default: [] },
     abilities: { type: Array, default: [] },
     equipment: { type: Array, default: [] },
+    criticals: { type: Array, default: [] },
     notes: { type: Array, default: [] },
     quickNotes: String,
     totalXP: { type: Number, default: 0 },
