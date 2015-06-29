@@ -44,14 +44,9 @@ function CriticalTrackerFactory(_, criticals)
 
         $scope.add = function()
         {
-            if($scope.selectedCrit)
+            if($scope.selectedCrit && !_.contains($scope.char.criticals, $scope.selectedCrit.title))
             {
-                console.log('crits:', $scope.char);
-
-                //$scope.char.criticals = $scope.char.criticals || [];
                 $scope.char.criticals.push($scope.selectedCrit.title);
-
-
                 $scope.char.save();
             } // end if
         }; // end add
