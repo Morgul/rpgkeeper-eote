@@ -15,6 +15,11 @@
             flex: 0 0 300px;
             width: 300px;
             height: 445px;
+
+            @media(max-width: 1200px) {
+                width: 0;
+                display: none;
+            }
         }
 
         .middle-column {
@@ -27,6 +32,10 @@
             align-content: stretch;
             align-items: stretch;
             margin-left: 10px;
+
+            @media(max-width: 1200px) {
+                margin-left: 0;
+            }
 
             #characteristics {
                 flex: 1 1 auto;
