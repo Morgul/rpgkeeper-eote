@@ -3,13 +3,47 @@
 </div>
 
 <div class="modal-body">
-    <div ng-show="loading" class="text-center">
-        <h4>Loading Force Powers</h4>
-        <progressbar class="progress-striped active" max="100" value="100"></progressbar>
+    <div class="panel panel-default forcePower-directive">
+        <div class="panel-heading" style="padding: 5px 10px;">
+            <b>{{ forcePower.name }}</b>
+        </div>
+        <div class="panel-body" style="padding: 10px">
+            <markdown src="forcePower.base.description"></markdown>
+        </div>
     </div>
-    <form ng-hide="loading">
-        <h4 class="text-center">Not implemented, yet.</h4>
-    </form>
+
+    <hr class="sm">
+
+    <div class="clearfix" style="margin-bottom: 10px;">
+        <a href="#" class="pull-right" ng-click="addUpgrade()"><i class="fa fa-plus"></i> Add Upgrade</a>
+    </div>
+
+    <div class="row-flex">
+        <div class="well well-sm col-half" ng-repeat="upgrade in forcePower.base.upgrades" ng-init="populateUpgrade(upgrade, $index)">
+            <form style="width: 100%;">
+                <button ng-if="upgrade.new" type="button" class="close" aria-label="Close" style="position: relative; top:-3px" ng-click="removeUpgrade($index)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-group">
+                    <label for="name-{{$index}}">Name</label>
+                    <input id="name-{{$index}}" class="form-control" type="text" placeholder="Ex: Magnitude" ng-model="upgrade.name" ng-disabled="!upgrade.new">
+                </div>
+                <div class="form-group">
+                    <label for="ranks-{{$index}}">Ranks</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-model="upgrade.purchased" btn-checkbox>Purchased</button>
+                        </span>
+                        <input id="ranks-{{$index}}" class="form-control" type="number" min="1" placeholder="1" ng-model="upgrade.ranks" ng-disabled="!upgrade.purchased">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="desc-{{$index}}">Description</label>
+                    <textarea id="desc-{{$index}}" class="form-control" rows="5" placeholder="Ex: My special awesome upgrade." ng-model="upgrade.description" ng-disabled="!upgrade.new"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div class="modal-footer">

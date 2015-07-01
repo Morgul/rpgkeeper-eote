@@ -16,6 +16,7 @@ function ForcePowerListFactory(_, $modal)
                     templateUrl: '/systems/eote/components/forcePower/modals/editForcePower.html',
                     keyboard: false,
                     scope: $scope,
+                    size: 'lg',
                     controller: 'EditForcePowerModal',
                     resolve: {
                         forcePower: function()
@@ -27,6 +28,7 @@ function ForcePowerListFactory(_, $modal)
                 .result
                 .then(function(modForcePower)
                 {
+                    //modForcePower = _.omit(modForcePower, 'base');
                     _.apply(forcePower, modForcePower);
                     $scope.char.save();
                 });
