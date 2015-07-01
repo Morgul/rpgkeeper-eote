@@ -118,6 +118,8 @@ db.Weapons = trivialdb.defineModel('weapons', {
 
 db.Character = trivialdb.defineModel('characters', {
     baseChar: { type: String, required: true },
+    career: String,
+    specializations: { type: Array, default: [] },
     gender: String,
     species: String,
     age: Number,

@@ -5,6 +5,29 @@
         </div>
         <div class="middle-column">
 
+            <!-- Career -->
+            <div id="career-spec" class="panel panel-default stat-panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Career / Specializations</h4>
+                </div>
+                <div class="panel-body stat-row">
+                    <form style="width: 100%">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="career-label">Career</span>
+                                <input type="text" class="form-control" placeholder="Ex: Smuggler" aria-describedby="career-label" ng-model="char.career" ng-change="char.save()">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="specs-label">Specializations</span>
+                                <input type="text" class="form-control" placeholder="Ex: Pilot, Scoundrel" aria-describedby="specs-label" ng-model="char.specializations" ng-list=", " ng-change="char.save()">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <!-- Characteristics -->
             <div id="characteristics" class="panel panel-default">
                 <div class="panel-heading clearfix">
@@ -19,30 +42,30 @@
                         <!-- Brawn -->
                         <div class="panel panel-default char">
                             <div class="panel-body text-center">
-                                <h3>{{ char.characteristics.brawn.ranks || 0 }}</h3>
+                                <h4>{{ char.characteristics.brawn.ranks || 0 }}</h4>
                             </div>
                             <div class="panel-footer">
-                                <h4 class="panel-title text-center">Brawn</h4>
+                                <h5 class="panel-title text-center">Brawn</h5>
                             </div>
                         </div>
 
                         <!-- Agility -->
                         <div class="panel panel-default char">
                             <div class="panel-body text-center">
-                                <h3>{{ char.characteristics.agility.ranks || 0 }}</h3>
+                                <h4>{{ char.characteristics.agility.ranks || 0 }}</h4>
                             </div>
                             <div class="panel-footer">
-                                <h4 class="panel-title text-center">Agility</h4>
+                                <h5 class="panel-title text-center">Agility</h5>
                             </div>
                         </div>
 
                         <!-- Intellect -->
                         <div class="panel panel-default char">
                             <div class="panel-body text-center">
-                                <h3>{{ char.characteristics.intellect.ranks || 0 }}</h3>
+                                <h4>{{ char.characteristics.intellect.ranks || 0 }}</h4>
                             </div>
                             <div class="panel-footer">
-                                <h4 class="panel-title text-center">Intellect</h4>
+                                <h5 class="panel-title text-center">Intellect</h5>
                             </div>
                         </div>
                     </div>
@@ -51,55 +74,31 @@
                         <!-- Cunning -->
                         <div class="panel panel-default char">
                             <div class="panel-body text-center">
-                                <h3>{{ char.characteristics.cunning.ranks || 0 }}</h3>
+                                <h4>{{ char.characteristics.cunning.ranks || 0 }}</h4>
                             </div>
                             <div class="panel-footer">
-                                <h4 class="panel-title text-center">Cunning</h4>
+                                <h5 class="panel-title text-center">Cunning</h5>
                             </div>
                         </div>
 
                         <!-- Willpower -->
                         <div class="panel panel-default char">
                             <div class="panel-body text-center">
-                                <h3>{{ char.characteristics.willpower.ranks || 0 }}</h3>
+                                <h4>{{ char.characteristics.willpower.ranks || 0 }}</h4>
                             </div>
                             <div class="panel-footer">
-                                <h4 class="panel-title text-center">Willpower</h4>
+                                <h5 class="panel-title text-center">Willpower</h5>
                             </div>
                         </div>
 
                         <!-- Presence -->
                         <div class="panel panel-default char">
                             <div class="panel-body text-center">
-                                <h3>{{ char.characteristics.presence.ranks || 0 }}</h3>
+                                <h4>{{ char.characteristics.presence.ranks || 0 }}</h4>
                             </div>
                             <div class="panel-footer">
-                                <h4 class="panel-title text-center">Presence</h4>
+                                <h5 class="panel-title text-center">Presence</h5>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Experience -->
-            <div id="experience" class="panel panel-default stat-panel">
-                <div class="panel-heading">
-                    <button type="button" class="close" aria-label="Edit" ng-click="editExperience()">
-                        <span aria-hidden="true"><i class="fa fa-edit"></i></span>
-                    </button>
-                    <h4 class="panel-title">Experience</h4>
-                </div>
-                <div class="panel-body stat-row">
-                    <div class="stat">
-                        <h5 class="title">Total</h5>
-                        <div class="body">
-                            <h4>{{ char.totalXP || 0 }}</h4>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <h5 class="title">Available</h5>
-                        <div class="body">
-                            <h4>{{ char.availableXP || 0 }}</h4>
                         </div>
                     </div>
                 </div>
@@ -336,6 +335,30 @@
                         <h5 class="title">Pool / Committed</h5>
                         <div class="body">
                             <h4>{{ char.forcePool || 0 }} / {{ char.forceCommitted || 0 }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div id="experience" class="panel panel-default stat-panel">
+                <div class="panel-heading">
+                    <button type="button" class="close" aria-label="Edit" ng-click="editExperience()">
+                        <span aria-hidden="true"><i class="fa fa-edit"></i></span>
+                    </button>
+                    <h4 class="panel-title">Experience</h4>
+                </div>
+                <div class="panel-body stat-row">
+                    <div class="stat">
+                        <h5 class="title">Total</h5>
+                        <div class="body">
+                            <h4>{{ char.totalXP || 0 }}</h4>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <h5 class="title">Available</h5>
+                        <div class="body">
+                            <h4>{{ char.availableXP || 0 }}</h4>
                         </div>
                     </div>
                 </div>
