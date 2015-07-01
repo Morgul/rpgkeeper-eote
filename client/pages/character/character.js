@@ -4,7 +4,7 @@
 // @module character.js
 // ---------------------------------------------------------------------------------------------------------------------
 
-function CharacterCtrl($scope, $modal, charSvc, diceSvc, abilitySvc)
+function CharacterCtrl($scope, $anchorScroll, $modal, charSvc, diceSvc, abilitySvc)
 {
     Object.defineProperties($scope, {
         abilities: {
@@ -213,6 +213,8 @@ function CharacterCtrl($scope, $modal, charSvc, diceSvc, abilitySvc)
         var ability = ranks > charScore ? ranks - charScore : charScore - ranks;
 
         diceSvc.setDice({ proficiency: proficiency, ability: ability });
+
+        $anchorScroll('dice-roller');
     }; // end setSkillDice
 
     //------------------------------------------------------------------------------------------------------------------
@@ -222,6 +224,7 @@ function CharacterCtrl($scope, $modal, charSvc, diceSvc, abilitySvc)
 
 angular.module('eote.controllers').controller('CharacterCtrl', [
     '$scope',
+    '$anchorScroll',
     '$modal',
     'CharacterService',
     'DiceRollerService',
