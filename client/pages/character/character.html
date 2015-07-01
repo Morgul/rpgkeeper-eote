@@ -306,16 +306,6 @@
             <!-- Crit Tracker -->
             <critical-tracker char="char"></critical-tracker>
 
-            <!-- Quick Notes -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">Quick Notes</h4>
-                </div>
-                <div class="panel-body" style="padding: 0;">
-                    <textarea class="form-control" rows="5" style="border: none; border-radius: 0; resize: vertical" ng-model="char.quickNotes" ng-change="char.save()"></textarea>
-                </div>
-            </div>
-
             <!-- Force -->
             <div class="panel panel-default stat-panel">
                 <div class="panel-heading">
@@ -361,6 +351,16 @@
                             <h4>{{ char.availableXP || 0 }}</h4>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Quick Notes -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Quick Notes</h4>
+                </div>
+                <div class="panel-body" style="padding: 0;">
+                    <textarea class="form-control" rows="5" style="border: none; border-radius: 0; resize: vertical" ng-model="char.quickNotes" ng-change="char.save()"></textarea>
                 </div>
             </div>
 
