@@ -15,11 +15,9 @@
         <div class="form-group">
             <label for="description">Description</label>
             <textarea id="description" rows="10" class="form-control" ng-model="ability.description" ng-disabled="!isNew(ability)" placeholder="Ex: My super awesome ability."></textarea>
-            <p class="help-block text-right">
-                Use Markdown to format text. (<a target="_blank" href="https://guides.github.com/features/mastering-markdown/">Guide</a>)
-            </p>
         </div>
     </form>
+    <div ng-include="'/systems/eote/components/help/formatting.html'"></div>
 </div>
 
 <div class="modal-footer">
