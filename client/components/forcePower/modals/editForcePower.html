@@ -32,7 +32,7 @@
                     <label for="ranks-{{$index}}">Ranks</label>
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" ng-model="upgrade.purchased" btn-checkbox>Purchased</button>
+                            <button class="btn btn-primary" type="button" ng-model="upgrade.purchased" btn-checkbox>Purchased</button>
                         </span>
                         <input id="ranks-{{$index}}" class="form-control" type="number" min="1" placeholder="1" ng-model="upgrade.ranks" ng-disabled="!upgrade.purchased">
                     </div>

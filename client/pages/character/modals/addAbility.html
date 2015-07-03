@@ -10,11 +10,11 @@
     <form ng-hide="loading">
         <div class="form-group">
             <label for="name">Name</label>
-            <input id="name" type="text" class="form-control" ng-model="ability.name" typeahead="ability.name for ability in abilities | filter:$viewValue" typeahead-on-select="selectAbility($item, $model, $label)">
+            <input id="name" type="text" class="form-control" ng-model="ability.name" typeahead="ability.name for ability in abilities | filter:$viewValue" typeahead-on-select="selectAbility($item, $model, $label)" placeholder="Ex: Inorganic">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" rows="10" class="form-control" ng-model="ability.description" ng-disabled="!isNew(ability)"></textarea>
+            <textarea id="description" rows="10" class="form-control" ng-model="ability.description" ng-disabled="!isNew(ability)" placeholder="Ex: My super awesome ability."></textarea>
             <p class="help-block text-right">
                 Use Markdown to format text. (<a target="_blank" href="https://guides.github.com/features/mastering-markdown/">Guide</a>)
             </p>
