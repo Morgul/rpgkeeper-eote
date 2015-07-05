@@ -124,6 +124,14 @@ db.Character = trivialdb.defineModel('characters', {
     species: String,
     age: Number,
     height: String,
+    armor: {
+        name: String,
+        defense: { type: Number, default: 0 },
+        soak: { type: Number, default: 0 },
+        hardPoints: { type: Number, default: 0 },
+        encumbrance: { type: Number, default: 0 },
+        upgrades: String
+    },
     characteristics: { type: Array, default: db.Characteristics },
     soak: { type: Number, default: 0 },
     forceRank: { type: Number, default: 0 },

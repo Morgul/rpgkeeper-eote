@@ -118,11 +118,34 @@
                     <button type="button" class="close" aria-label="Edit" ng-click="editArmor()">
                         <span aria-hidden="true"><i class="fa fa-edit"></i></span>
                     </button>
-                    <h4 class="panel-title">Armor</h4>
+                    <h4 class="panel-title">Armor <span ng-if="char.armor.name">- {{ char.armor.name }}</span></h4>
                 </div>
-                <div class="panel-body">
-                    <h4 class="text-center">Not yet implemented.</h4>
-                </div>
+                <table class="table table-condensed text-center">
+                    <tr>
+                        <th class="text-center">Defense</th>
+                        <th class="text-center">Soak</th>
+                        <th class="text-center">Hard Points</th>
+                        <th class="text-center">Encumbrance</th>
+                        <th class="text-center">Upgrades</th>
+                    </tr>
+                    <tr>
+                        <td>{{ char.armor.defense }}</td>
+                        <td>{{ char.armor.soak }}</td>
+                        <td>{{ char.armor.hardPoints }}</td>
+                        <td>{{ char.armor.encumbrance }}</td>
+                        <td class="text-left">
+                            <small>
+                                <markdown src="char.armor.upgrades || 'No upgrades.'"></markdown>
+                                <!--
+                                <b>Enhanced Optics Suite</b> - +1 Vigilance Mod<br>
+                                <b>Strength Enhancing System</b> - +1 Brawn, +1 Athletics, +1 Innate Talent (Brace)<br>
+                                <b>Another Mod</b> - +1 Brawn, +1 Athletics, +1 Innate Talent (Brace)<br>
+                                <b>Yet Another Mod</b> - +1 Brawn, +1 Athletics, +1 Innate Talent (Brace)
+                                -->
+                            </small>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <!-- Weapons -->
