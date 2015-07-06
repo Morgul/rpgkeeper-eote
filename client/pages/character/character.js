@@ -202,6 +202,29 @@ function CharacterCtrl($scope, $anchorScroll, $modal, charSvc, diceSvc, abilityS
     // Skills
     //------------------------------------------------------------------------------------------------------------------
 
+    $scope.addSkill = function(type)
+    {
+        $modal.open({
+                templateUrl: '/systems/eote/pages/character/modals/addSkill.html',
+                //size: 'lg',
+                scope: $scope,
+                keyboard: false,
+                controller: 'AddSkillModal',
+                resolve: {
+                    type: function()
+                    {
+                        return type;
+                    }
+                }
+            })
+            .result
+            .then(function(skill)
+            {
+                charSvc.current.skills.push(skill);
+                charSvc.current.save();
+            });
+    }; // end addSkill
+
     $scope.setSkillDice = function(skill)
     {
         // First, we find the rank of the skill, and the value of the characteristic
@@ -254,7 +277,6 @@ function CharacterCtrl($scope, $anchorScroll, $modal, charSvc, diceSvc, abilityS
             .result
             .then(function(weapon)
             {
-                console.log('adding weapon:', weapon);
                 charSvc.current.weapons.push(weapon);
                 charSvc.current.save();
             });
