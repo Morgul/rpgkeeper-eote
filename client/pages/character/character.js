@@ -112,6 +112,7 @@ function CharacterCtrl($scope, $anchorScroll, $modal, charSvc, diceSvc, abilityS
             .result
             .then(function(ability)
             {
+                abilitySvc.abilities.push(ability);
                 charSvc.current.abilities.push(ability.name);
                 charSvc.current.save();
             });
