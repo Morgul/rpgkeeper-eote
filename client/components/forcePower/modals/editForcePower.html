@@ -14,11 +14,13 @@
 
     <hr class="sm">
 
-    <div class="clearfix" style="margin-bottom: 10px;">
-        <a href="#" class="pull-right" ng-click="addUpgrade()"><i class="fa fa-plus"></i> Add Upgrade</a>
-    </div>
+    <p class="text-muted">
+        This is a list of all upgrades associated with this power. To purchase an upgrade for your character, simply
+        click the 'Purchased' button on the power. If you have purchased it more than once, simply increase the 'ranks'
+        field, next to the 'Purchased' button.
+    </p>
 
-    <div class="row-flex">
+    <div ng-if="forcePower.base.upgrades.length > 0" class="row-flex">
         <div class="well well-sm col-half" ng-repeat="upgrade in forcePower.base.upgrades" ng-init="populateUpgrade(upgrade, $index)">
             <form style="width: 100%;">
                 <button ng-if="upgrade.new" type="button" class="close" aria-label="Close" style="position: relative; top:-3px" ng-click="removeUpgrade($index)">
@@ -43,6 +45,9 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="clearfix" style="margin-bottom: 10px;">
+        <a href="#" class="pull-right" ng-click="addUpgrade()"><i class="fa fa-plus"></i> Add Upgrade</a>
     </div>
     <div ng-include="'/systems/eote/components/help/formatting.html'"></div>
 </div>
