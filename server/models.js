@@ -59,7 +59,6 @@ db.Skills = [
     { name: "Vigilance", type: "general", characteristic: "Willpower", ranks: 0, career: false },
 
     // Knowledge Skills
-    { name: "All", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
     { name: "Core Worlds", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
     { name: "Education", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
     { name: "Lore", type: "knowledge", characteristic: "Intellect", ranks: 0, career: false },
