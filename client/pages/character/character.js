@@ -224,24 +224,41 @@ function CharacterCtrl($scope, $anchorScroll, $modal, charSvc, diceSvc, abilityS
     $scope.editArmor = function()
     {
         $modal.open({
-                templateUrl: '/systems/eote/pages/character/modals/editArmor.html',
-                keyboard: false,
-                controller: 'EditArmorModal',
-                resolve: {
-                    armor: function()
-                    {
-                        return _.cloneDeep(charSvc.current.armor);
-                    }
+            templateUrl: '/systems/eote/pages/character/modals/editArmor.html',
+            keyboard: false,
+            controller: 'EditArmorModal',
+            resolve: {
+                armor: function()
+                {
+                    return _.cloneDeep(charSvc.current.armor);
                 }
-            })
+            }
+        })
             .result
             .then(function(armor)
             {
-                console.log('armor:', armor);
                 _.assign(charSvc.current.armor, armor);
                 charSvc.current.save();
             });
     }; // end editArmor
+
+    $scope.addWeapon = function()
+    {
+        $modal.open({
+                templateUrl: '/systems/eote/pages/character/modals/addWeapon.html',
+                size: 'lg',
+                scope: $scope,
+                keyboard: false,
+                controller: 'AddWeaponModal'
+            })
+            .result
+            .then(function(weapon)
+            {
+                console.log('adding weapon:', weapon);
+                charSvc.current.weapons.push(weapon);
+                charSvc.current.save();
+            });
+    }; // end addWeapon
 
     //------------------------------------------------------------------------------------------------------------------
 } // end CharacterCtrl

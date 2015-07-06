@@ -136,12 +136,6 @@
                         <td class="text-left">
                             <small>
                                 <markdown src="char.armor.upgrades || 'No upgrades.'"></markdown>
-                                <!--
-                                <b>Enhanced Optics Suite</b> - +1 Vigilance Mod<br>
-                                <b>Strength Enhancing System</b> - +1 Brawn, +1 Athletics, +1 Innate Talent (Brace)<br>
-                                <b>Another Mod</b> - +1 Brawn, +1 Athletics, +1 Innate Talent (Brace)<br>
-                                <b>Yet Another Mod</b> - +1 Brawn, +1 Athletics, +1 Innate Talent (Brace)
-                                -->
                             </small>
                         </td>
                     </tr>
@@ -151,13 +145,13 @@
             <!-- Weapons -->
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
-                    <button type="button" class="close" aria-label="Edit" ng-click="editWeapons()">
-                        <span aria-hidden="true"><i class="fa fa-edit"></i></span>
+                    <button type="button" class="close" aria-label="Add" ng-click="addWeapon()">
+                        <span aria-hidden="true"><i class="fa fa-plus"></i></span>
                     </button>
                     <h4 class="panel-title">Weapons</h4>
                 </div>
                 <div class="panel-body">
-                    <h4 class="text-center">Not yet implemented.</h4>
+                    <weapon-list char="char"></weapon-list>
                 </div>
             </div>
 

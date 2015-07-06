@@ -35,6 +35,8 @@ function CharacterModelFactory($http, Promise, baseSvc)
         // EotE Char
         get armor(){ return this.char.armor; },
         set armor(val){ this.char.armor = val; },
+        get weapons(){ return this.char.weapons; },
+        set weapons(val){ this.char.weapons = val; },
         get career(){ return this.char.career; },
         set career(val){ this.char.career = val; },
         get specializations(){ return this.char.specializations; },
