@@ -50,7 +50,10 @@ function AddTalentModal($scope, $http, _)
     {
         if(!$scope.disabled)
         {
-            $http.put('/systems/eote/talents/' + talent.name, talent);
+            var talentDesc = { name: talent.name };
+            _.assign(talentDesc, talent.description);
+
+            $http.put('/systems/eote/talents/' + talent.name, talentDesc);
         } // end if
 
         $scope.$close(talent);
