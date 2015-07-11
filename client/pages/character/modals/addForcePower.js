@@ -33,6 +33,7 @@ function AddForcePowerModal($scope, $http, _)
         $scope.disabled = true;
         $scope.forcePower.name = forcePower.name;
         $scope.forcePower.description = forcePower.description;
+        $scope.forcePower.upgrades = forcePower.upgrades;
         selectedPower = { name: forcePower.name };
     }; // end selectForcePowers
 
